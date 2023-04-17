@@ -7,9 +7,10 @@ public class CockroachRace {
 		Scanner scanner = new Scanner(System.in);
 		boolean ContinueGame = true;
 		while (ContinueGame) {
-			System.out.println("Enter the number of runners in the race (minimum 2):");
+			Cockroach.fotoFinish = -1;
+			System.out.println("Enter the number of runners in the race (minimum 2): ");
 			int runner = scanner.nextInt();
-			System.out.println("Enter track length (minimum 1):");
+			System.out.println("Enter track length (minimum 1): ");
 			int distance = scanner.nextInt();
 			if (runner >= 2 && distance >= 1) {
 				List<Cockroach> cockroachThreads = new ArrayList<>();
@@ -26,7 +27,7 @@ public class CockroachRace {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("The race is over! Winner is the runner №" + Cockroach.fotofinish);
+				System.out.println("The race is over! Winner is the runner №" + Cockroach.fotoFinish);
 			} else {
 				System.out.println("The race must have a minimum of 2 runners, and the distance must be at least 1 meter.");						
 			}			

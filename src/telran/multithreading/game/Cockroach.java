@@ -3,7 +3,7 @@ package telran.multithreading.game;
 public class Cockroach extends Thread {
 	private final int id;
 	private final int distance;
-	static int fotofinish = -1;
+	static int fotoFinish;
 
 	public Cockroach(int id, int distance) {
 		this.id = id;
@@ -21,8 +21,8 @@ public class Cockroach extends Thread {
 			}
 		}
 		System.out.printf("*****Runner №%d finished!!*****\n", id);
-		if (fotofinish == -1) {
-			fotofinish = id;
+		if (fotoFinish == -1) {
+			fotoFinish = id;
 		}
 	}
 }
