@@ -10,9 +10,9 @@ import telran.view.*;
 
 public class RaceAppl {
 
-	private static final int MAX_THREADS = 20;
+	private static final int MAX_THREADS = 20000;
 	private static final int MIN_DISTANCE = 10;
-	private static final int MAX_DISTANCE = 1000;
+	private static final int MAX_DISTANCE = 100000;
 	private static final int MIN_SLEEP = 2;
 	private static final int MAX_SLEEP = 5;
 	public static void main(String[] args) {
@@ -61,10 +61,18 @@ public class RaceAppl {
 		
 	}
 	private static void displayResultsTable(Race race) {
-		System.out.println("place\tracer number\ttime");
-		List<Runner> resultsTable = race.getResultsTable();
-		IntStream.range(0, resultsTable.size()).mapToObj(i ->  toPrintedString(i, race))
-		.forEach(System.out::println);
+		ArrayList<Runner> table = race.getResultsTable();
+		Instant prev = table.get(0).getFinsishTime();
+		int size = table.size();
+		int count = 0;
+		for(int i = 1; i < size; i++) {
+			Instant current = table.get(i).getFinsishTime();
+			if (current.isBefore(prev)) {
+				count++;
+			}
+			prev = current;
+		}
+		System.out.printf("count of results violations is %d\n", count);
 		
 		
 		

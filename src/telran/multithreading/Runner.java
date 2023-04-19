@@ -24,13 +24,13 @@ public class Runner extends Thread {
 			} catch (InterruptedException e) {
 				
 			}
-			System.out.println(runnerId);
+			
 		}
 		
 		
 		synchronized (race){
-			
 			finishTime = Instant.now();
+			
 			finishRace();
 		} 
 		
