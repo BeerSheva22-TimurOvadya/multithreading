@@ -1,9 +1,11 @@
-package telran.multithreading.game;
+package telran.multithreading.gameAtomic;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Cockroach extends Thread {
 	private final int id;
 	private final int distance;
-	static int fotoFinish;
+	static AtomicInteger fotoFinish = new AtomicInteger(-1);
 
 	public Cockroach(int id, int distance) {
 		this.id = id;
@@ -21,8 +23,6 @@ public class Cockroach extends Thread {
 			}
 		}
 		System.out.printf("*****Runner №%d finished!!*****\n", id);
-		if (fotoFinish == -1) {
-			fotoFinish = id;
-		}
+		fotoFinish.compareAndSet(-1, id);
 	}
 }
