@@ -12,14 +12,17 @@ public class CockroachRace {
 			int runner = scanner.nextInt();
 			System.out.println("Enter track length (minimum 1): ");
 			int distance = scanner.nextInt();
+			
 			if (runner >= 2 && distance >= 1) {
 				List<Cockroach> cockroachThreads = new ArrayList<>();
 				System.out.println("The race has begun");
+				
 				for (int i = 1; i <= runner; i++) {
 					Cockroach cockroach = new Cockroach(i, distance);
 					cockroachThreads.add(cockroach);
 					cockroach.start();
-				}				
+				}	
+				
 				for (Cockroach cockroach : cockroachThreads) {
 					try {
 						cockroach.join();

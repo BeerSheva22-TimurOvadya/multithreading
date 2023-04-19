@@ -1,7 +1,5 @@
 package telran.multithreading.game.listWinner;
 
-
-
 public class CockroachWithList extends Thread {
     private final int id;
     private final int distance;
@@ -15,12 +13,13 @@ public class CockroachWithList extends Thread {
     @Override
     public void run() {
         for (int i = 1; i <= distance; i++) {
-            System.out.printf("Runner №%d run %d meters.\n", id, i);
+           
             try {
-                Thread.sleep((long) (Math.random() * 100));
+                Thread.sleep((long) (Math.random() * 10));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.printf("Runner №%d run %d meters.\n", id, i);
         }
         finishTime = System.currentTimeMillis();
     }

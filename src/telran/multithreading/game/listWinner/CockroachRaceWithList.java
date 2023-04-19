@@ -47,7 +47,7 @@ public class CockroachRaceWithList {
                 System.out.println("******Race results******");
                 int rank = 1;
                 for (CockroachWithList cockroach : cockroachThreads) {
-                   System.out.printf("%d: Runner№%d finished in %dms\n", rank, cockroach.getId(), cockroach.getFinishTime());
+                   System.out.printf("%d: Runner №%d finished in %dms\n", rank, cockroach.getId(), cockroach.getFinishTime());
                 	rank++;
                 }
             } 
