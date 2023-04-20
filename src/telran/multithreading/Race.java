@@ -12,6 +12,7 @@ public class Race {
 	private int maxSleep;
 	private ArrayList<Runner> resultsTable;
 	private Instant startTime;
+	public Lock lock = new ReentrantLock(true);
 	
 	
 	public ArrayList<Runner> getResultsTable() {

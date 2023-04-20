@@ -72,7 +72,7 @@ public class RaceAppl {
 			}
 			prev = current;
 		}
-		System.out.printf("count of results violations is %d\n", count);
+		System.out.printf("number of threads is %d; count of results violations is %d\n",size, count);
 		
 		
 		
