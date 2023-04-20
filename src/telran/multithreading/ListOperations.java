@@ -3,7 +3,6 @@ package telran.multithreading;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;;
 
 public class ListOperations extends Thread {
