@@ -38,7 +38,7 @@ public class MessageBox {
 		}
 	}
 
-	public String get()  {
+	public String get() {
 		lock.lock();
 		try {
 			String res = message;

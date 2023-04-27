@@ -12,8 +12,8 @@ public class Receiver extends Thread {
 		this.messageBox = mesageBox;
 
 	}
-	
-	public void display (String message) {
+
+	public void display(String message) {
 		System.out.printf("thread: %s; received message: %s\n", getName(), message);
 		counter.incrementAndGet();
 	}
@@ -25,11 +25,11 @@ public class Receiver extends Thread {
 			try {
 				message = messageBox.take();
 				display(message);
-				
+
 			} catch (InterruptedException e) {
 				do {
 					message = messageBox.get();
-					if(message != null) {
+					if (message != null) {
 						display(message);
 					}
 				} while (message != null);
