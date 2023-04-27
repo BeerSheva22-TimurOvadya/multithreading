@@ -16,20 +16,20 @@ public class SenderReceiversAppl {
 	    sender.start();
 	    List<Receiver> receivers = new ArrayList<>();
 	    for (int i = 0; i < N_RECEIVERS; i++) {
-	      Receiver rec = new Receiver(messageBox);
-	      rec.start();
-	      receivers.add(rec);
+	      Receiver receiver = new Receiver(messageBox);
+	      receiver.start();
+	      receivers.add(receiver);
 	    }
 	    sender.join();
-	    receivers.forEach(x -> x.interrupt());
-	    receivers.forEach(x -> {
+	    receivers.forEach(r -> r.interrupt());
+	    receivers.forEach(r -> {
 	    	try {
-				x.join();
+				r.join();
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 	    });
-	    System.out.println(Receiver.counter);
+	    System.out.println("Number of processed messages: " + Receiver.counter);
 	  }
 		
 
