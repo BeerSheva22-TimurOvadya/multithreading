@@ -3,29 +3,25 @@ package telran.multithreading.producers;
 import telran.multithreading.MessageBox;
 
 public class Sender extends Thread {
-    private MessageBox messageBoxEven;
-    private MessageBox messageBoxOdd;
-    private int nMessages;
+	private MessageBox messageBox;
+	private int nMessages;
 
-    public Sender(MessageBox messageBoxEven, MessageBox messageBoxOdd, int nMessages) {
-        this.messageBoxEven = messageBoxEven;
-        this.messageBoxOdd = messageBoxOdd;
-        this.nMessages = nMessages;
-    }
+	public Sender(MessageBox messageBox, int nMessages) {
+		this.messageBox = messageBox;
+		this.nMessages = nMessages;
+	}
 
-    @Override
-    public void run() {
-        for (int i = 1; i <= nMessages; i++) {
-            if (i % 2 == 0) {
-                messageBoxEven.put("message" + i);
-            } else {
-                messageBoxOdd.put("message" + i);
-            }
-            try {
-                sleep(10);
-            } catch (InterruptedException e) {
+	@Override
+	public void run() {
+		for (int i = 1; i <= nMessages; i++) {
+			try {
+				messageBox.put("message" + i);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-            }
-        }
-    }
+		}
+	}
+
 }

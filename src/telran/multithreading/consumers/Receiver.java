@@ -3,31 +3,24 @@ package telran.multithreading.consumers;
 import telran.multithreading.MessageBox;
 
 public class Receiver extends Thread {
-    private MessageBox messageBoxEven;
-    private MessageBox messageBoxOdd;
-    private boolean even;
+	private MessageBox messageBox;
 
-    public Receiver(MessageBox messageBoxEven, MessageBox messageBoxOdd, boolean even) {
-        this.messageBoxEven = messageBoxEven;
-        this.messageBoxOdd = messageBoxOdd;
-        this.even = even;
-        setDaemon(true);
-    }
+	public Receiver(MessageBox mesageBox) {
+		this.messageBox = mesageBox;
+		setDaemon(true);
+	}
 
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                String message;
-                if (even) {
-                    message = messageBoxEven.take();
-                } else {
-                    message = messageBoxOdd.take();
-                }
-                System.out.printf("thread: %s; received message: %s\n", getName(), message);
-            } catch (InterruptedException e) {
+	@Override
+	public void run() {
+		while (true) {
+			try {
+				String message = messageBox.take();
+				System.out.printf("thread: %s; received message: %s\n", getName(), message);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-            }
-        }
-    }
+		}
+	}
 }
