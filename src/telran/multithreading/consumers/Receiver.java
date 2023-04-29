@@ -1,14 +1,18 @@
 package telran.multithreading.consumers;
 
+
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import telran.multithreading.MessageBox;
+import telran.multithreading.util.MyLinkedBlockingQueue;
+
+
 
 public class Receiver extends Thread {
-	private MessageBox messageBox;
+	private BlockingQueue<String> messageBox;
 	public static AtomicInteger counter = new AtomicInteger(0);
 
-	public Receiver(MessageBox mesageBox) {
+	public Receiver(BlockingQueue<String>  mesageBox) {
 		this.messageBox = mesageBox;
 
 	}
@@ -28,7 +32,7 @@ public class Receiver extends Thread {
 
 			} catch (InterruptedException e) {
 				do {
-					message = messageBox.get();
+					message = messageBox.poll();
 					if (message != null) {
 						display(message);
 					}
